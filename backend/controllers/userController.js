@@ -45,13 +45,12 @@ async function userLogin(req, res) {
 
     //const address = await userService.getAddressByUserId(user.id);
 
-    //req.session.userId = user.id;
-    //req.session.email = user.email;
 
      // Store user data in the session
-     req.session.user = user;
+     req.session.userId = user.id;
+     req.session.email = user.email;
 
-     console.log(req.session.user);
+     //console.log(req.session.userId);
 
     // You can send a success response if needed
     res.status(200).json({ message: 'User login successful.' });
@@ -64,7 +63,7 @@ async function userLogin(req, res) {
 // Controller function for checking the user's session
 async function userSession(req, res) {
   try {
-    if (req.session.user) {
+    if (req.session.userId) {
       // User is authenticated, send user data
       console.log(req.session.user);
       res.status(200).json({ user: req.session.user });

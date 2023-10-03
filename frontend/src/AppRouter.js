@@ -2,6 +2,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProductList from './components/ProductList';
+import SignUp from './components/SignUp';
+import Login from './components/Login';
+import Profile from './components/Profile';
+import ProductDetails from './components/ProductDetails';
+
+
 
 
 
@@ -18,6 +24,12 @@ const AppRouter = () => {
     <Router>
       <Routes>
       <Route path="/" element={<ProductList />} />
+      <Route path="/signup" element={<SignUp onSuccessRegistration={() => navigateTo ('/Login')}/>} />
+      <Route path="/login" element={<Login onLogin={() => navigateTo ('/Profile')}/>} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/products/:id" element={<ProductDetails />} />
+
+
 
         
       </Routes>
